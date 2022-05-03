@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { HeroLoopGif } from "../../assets/public-assets";
 import { useVideoListContext } from "../../context/VideoListContext";
 import { getCategoriesService } from "../../services/Categories";
+import CategoryCard from "./CategoryCard";
 
 const Home = () => {
   const { state } = useVideoListContext();
@@ -46,25 +47,12 @@ const Home = () => {
       <div>Categories</div>
       <div className="category-wrapper">
         {categories.length !== 0 &&
-          categories.map((category) => <CategoryCard category={category} />)}
+          categories.map((category) => (
+            <CategoryCard category={category} key={category._id} />
+          ))}
       </div>
     </div>
   );
 };
 
 export default Home;
-
-function CategoryCard({ category }) {
-  console.log(category);
-  const { categoryName } = category;
-  return (
-    <div className="category-item">
-      <img
-        src="https://pbs.twimg.com/media/FC4X0TZVIAQ5Ssb?format=jpg&name=4096x4096"
-        alt="check"
-        className="category-item-img"
-      />
-      <div className="category-item-content"> {categoryName}</div>
-    </div>
-  );
-}
