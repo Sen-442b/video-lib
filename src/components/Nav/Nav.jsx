@@ -4,7 +4,7 @@ const Nav = () => {
   return (
     <nav className="nav-container">
       <div>
-        <i class="fa-solid fa-bars"></i>
+        <i className="fa-solid fa-bars"></i>
       </div>
       <div>Logo</div>
       <div>Login</div>

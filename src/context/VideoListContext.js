@@ -8,7 +8,11 @@ const videoListReducer = (state, action) => {
   switch (action.type) {
     case "GET_VIDEO_LIST":
       return { ...state, videoList: action.payload };
-      break;
+    case "FILTER_SELECTED_CATEGORY":
+      return {
+        ...state,
+        filter: state.filter === action.payload ? "" : action.payload,
+      };
 
     default:
       break;
@@ -16,6 +20,7 @@ const videoListReducer = (state, action) => {
 };
 const initObj = {
   videoList: [],
+  filter: "",
 };
 const VideoListContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(videoListReducer, initObj);
@@ -24,7 +29,6 @@ const VideoListContextProvider = ({ children }) => {
       const { status, data } = await getVideoListService();
 
       if (status === 200) {
-        console.log(data.videos);
         dispatch({ type: "GET_VIDEO_LIST", payload: data.videos });
       }
     } catch (error) {

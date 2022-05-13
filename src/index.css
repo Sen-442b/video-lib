@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --primary-background-color: #151514;
-  --primary-text-color: rgba(235, 235, 235, 0.4);
-  --heading-text-color: #e8e8e8;
+
+  --primary-text-color: #e8e8e8;
+  --light-text-color: rgba(235, 235, 235, 0.4);
   --hero-text-color: rgba(235, 235, 235, 0.8);
+  --dim-text-color: rgba(235, 235, 235, 0.03);
 }
 
 body {
