@@ -1,0 +1,74 @@
+.chips-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chip {
+  background-color: rgba(113, 113, 113, 0.2);
+  height: 32px;
+  min-height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  padding: 0 10px;
+  outline: 2px solid var(--light-text-color);
+  cursor: pointer;
+}
+
+.chip:hover {
+  background-color: var(--light-text-color);
+  color: var(--primary-background-color);
+}
+.chip-active {
+  background-color: var(--light-text-color);
+  color: var(--primary-background-color);
+}
+.chip-active:hover {
+  background-color: rgba(113, 113, 113, 0.2);
+  color: var(--light-text-color);
+}
+.video-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 0.5rem;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border: 1px solid var(--dim-text-color);
+}
+
+.video-desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 3px;
+}
+.video-desc-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+.video-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.light-text-color {
+  color: var(--light-text-color);
+}
+
+.fs-sml {
+  font-size: 0.8rem;
+}
+.unset-all {
+  all: unset;
+}
