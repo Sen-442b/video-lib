@@ -38,6 +38,10 @@ import {
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
+import {
+  getAllUsersHandler,
+  getUserHandler,
+} from "./backend/controllers/UsersController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -75,6 +79,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
+
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
@@ -83,11 +88,15 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/videos", getAllVideosHandler.bind(this));
       this.get("video/:videoId", getVideoHandler.bind(this));
 
-      // TODO: POST VIDEO TO DB
+      // TODO: POST VIDEO TO
 
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+
+      //users routes
+      this.get("/users"), getAllUsersHandler.bind(this);
+      this.get("/users/:userId"), getUserHandler.bind(this);
 
       // likes routes (private)
       this.get("/user/likes", getLikedVideosHandler.bind(this));
@@ -131,6 +140,7 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+      this.passthrough("https://emailvalidation.abstractapi.com/**");
     },
   });
 }

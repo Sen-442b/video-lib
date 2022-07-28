@@ -9,6 +9,16 @@
   --light-text-color: rgba(235, 235, 235, 0.4);
   --hero-text-color: rgba(235, 235, 235, 0.8);
   --dim-text-color: rgba(235, 235, 235, 0.03);
+  --primary-alert-background-color: #93c5fd;
+  --primary-alert-text-color: #147af0;
+  --secondary-alert-background-color: #d8b4fe;
+  --secondary-alert-text-color: #953ff0;
+  --danger-background-color: #fca5a5;
+  --danger-text-color: #a11d1d;
+  --alert-immediate-action-bg-color: #f8d257;
+  --alert-immediate-action-txt-color: rgb(156, 156, 25);
+  --alert-success-bg-color: #86efac;
+  --alert-success-txt-color: #1c8d46;
 }
 
 body {

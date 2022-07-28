@@ -26,7 +26,7 @@ const VideoCard = ({ videoObj }) => {
           </div>
         </div>
         <button className="unset-all">
-          <i class="fa-solid fa-ellipsis-vertical"></i>
+          <i className="fa-solid fa-ellipsis-vertical"></i>
         </button>
       </div>
     </div>

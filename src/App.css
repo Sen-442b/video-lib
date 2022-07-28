@@ -1,3 +1,9 @@
 @import url("./screens/Home/home-styles.css");
 @import url("./components/Nav/nav-styles.css");
+@import url("./components/Guide/guide-styles.css");
 @import url("./screens/VideoList/video-listing-page.css");
+@import url("./screens/Login/login-styles.css");
+@import url("./screens/Logout/logout-styles.css");
+@import url("./screens/Signup/signup-styles.css");
+@import url("components/AlertBox/alert-box.css");
+@import url("./components/Animations/StarAnim/star-anim.css");

@@ -1,7 +1,9 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils";
+const bcrypt = require("bcryptjs");
 const sign = require("jwt-encode");
+const usersDb = require("../db/users");
 /**
  * All the routes related to Auth are present here.
  * These are Publicly accessible routes.
@@ -15,9 +17,11 @@ const sign = require("jwt-encode");
 
 export const signupHandler = function (schema, request) {
   const { email, password, ...rest } = JSON.parse(request.requestBody);
+
   try {
     // check if email already exists
     const foundUser = schema.users.findBy({ email });
+
     if (foundUser) {
       return new Response(
         422,
@@ -27,13 +31,18 @@ export const signupHandler = function (schema, request) {
         }
       );
     }
+    const saltRounds = 10;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(password, salt);
+
     const _id = uuid();
     const newUser = {
       _id,
       email,
-      password,
+      password: hash,
       createdAt: formatDate(),
       updatedAt: formatDate(),
+
       ...rest,
       likes: [],
       history: [],
@@ -41,6 +50,7 @@ export const signupHandler = function (schema, request) {
       watchlater: [],
     };
     const createdUser = schema.users.create(newUser);
+    console.log(createdUser);
     const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
@@ -62,6 +72,7 @@ export const signupHandler = function (schema, request) {
 
 export const loginHandler = function (schema, request) {
   const { email, password } = JSON.parse(request.requestBody);
+  console.log("It is from backend");
   try {
     const foundUser = schema.users.findBy({ email });
     if (!foundUser) {
@@ -71,7 +82,14 @@ export const loginHandler = function (schema, request) {
         { errors: ["The email you entered is not Registered. Not Found error"] }
       );
     }
-    if (password === foundUser.password) {
+
+    // const salt = bcrypt.genSaltSync(10);
+    // const hash = bcrypt.hashSync(password, salt);
+    // console.log(hash);
+    const isPasswordValid = bcrypt.compareSync(password, foundUser.password);
+    // console.log(isPasswordValid);
+
+    if (isPasswordValid) {
       const encodedToken = sign(
         { _id: foundUser._id, email },
         process.env.REACT_APP_JWT_SECRET
