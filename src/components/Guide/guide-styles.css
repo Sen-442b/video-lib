@@ -26,3 +26,16 @@
 .guide-select:hover {
   color: var(--light-text-color);
 }
+
+.overlay-main {
+  position: fixed;
+
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.551);
+}
