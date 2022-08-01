@@ -7,6 +7,10 @@
   padding: 0 1rem;
 }
 
+.btn-menu {
+  cursor: pointer;
+}
+
 .btn-outline {
   text-decoration: none;
   color: inherit;

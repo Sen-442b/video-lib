@@ -13,7 +13,7 @@ const VideoListingPage = () => {
 
   const videoListState = useSelector((storeState) => storeState.videoList);
   const { videoList, filter } = videoListState;
-  console.log(videoList);
+
   useEffect(() => {
     return () => dispatch(filterSelectedCategoryAction(""));
   }, []);

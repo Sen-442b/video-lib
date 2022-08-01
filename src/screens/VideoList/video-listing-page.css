@@ -42,6 +42,7 @@
   flex-direction: column;
   gap: 3px;
   border: 1px solid var(--dim-text-color);
+  position: relative;
 }
 
 .video-desc {
@@ -71,4 +72,40 @@
 }
 .unset-all {
   all: unset;
+}
+
+.ease-in {
+  transition-property: all;
+  transition-timing-function: ease-in;
+  transition-duration: 2s;
+}
+
+.btn-ellipsis {
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-wrapper {
+  width: 15rem;
+  height: 10rem;
+  right: 0;
+  border-radius: 4px;
+
+  position: absolute;
+  z-index: 999;
+
+  background-color: #212121;
+  padding: 0.5rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  height: 2rem;
+  padding: 4px;
+}
+
+.menu-item:hover {
+  background-color: rgb(171, 171, 171);
 }

@@ -13,8 +13,9 @@ const Nav = () => {
   return (
     <nav className="nav-container">
       <button
-        className="unset-all"
-        onClick={() => setGuideIsActive((prevBool) => !prevBool)}
+        className="unset-all btn-menu"
+        onClick={() => setGuideIsActive(true)}
+        title="Menu"
       >
         <i className="fa-solid fa-bars"></i>
       </button>
@@ -32,7 +33,7 @@ const Nav = () => {
           {authToken ? "Logout" : "Login"}
         </button>
       </div>
-      {guideIsActive && <Guide />}
+      {guideIsActive && <Guide setGuideIsActive={setGuideIsActive} />}
     </nav>
   );
 };
