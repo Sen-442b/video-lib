@@ -1,17 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useVideoListContext } from "../../context/VideoListContext";
+import { useDispatch } from "react-redux";
+import { filterSelectedCategoryAction } from "../../redux/features/videoListSlice";
+//import { useVideoListContext } from "../../context/VideoListContext";
 
 const CategoryCard = ({ category }) => {
   const navigateTo = useNavigate();
   const { categoryName, thumbnail } = category;
-  const { dispatch: videoListDispatch } = useVideoListContext();
+  const videoListDispatch = useDispatch();
   const categoryClickHandler = (clickedCategory) => {
-    console.log(clickedCategory);
-    videoListDispatch({
-      type: "FILTER_SELECTED_CATEGORY",
-      payload: clickedCategory,
-    });
+    videoListDispatch(filterSelectedCategoryAction(clickedCategory));
     navigateTo("/videoListing");
   };
   return (

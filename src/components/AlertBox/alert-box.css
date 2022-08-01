@@ -1,0 +1,54 @@
+.alert {
+  border-radius: 0.4rem;
+  padding: 0.2rem;
+
+  position: relative;
+  cursor: pointer;
+  transition: all ease-out 0.35s;
+}
+
+.alert:hover {
+  filter: brightness(1.2);
+}
+.alert-primary {
+  background-color: var(--primary-alert-background-color);
+  color: var(--primary-alert-text-color);
+}
+
+.alert-secondary {
+  background-color: var(--secondary-alert-background-color);
+  color: var(--secondary-alert-text-color);
+}
+
+.alert-danger {
+  background-color: var(--danger-background-color);
+  color: var(--danger-text-color);
+}
+
+.alert-icon {
+  font-size: 10px;
+}
+
+.alert-success {
+  background-color: var(--alert-success-bg-color);
+  color: var(--alert-success-txt-color);
+}
+
+.alert-immediate-action {
+  background-color: var(--alert-immediate-action-bg-color);
+  color: var(--alert-immediate-action-txt-color);
+}
+
+.material-icons {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.display-none {
+  display: none;
+}
+
+.text-align-justify {
+  text-align: justify;
+}

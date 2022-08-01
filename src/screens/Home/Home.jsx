@@ -2,19 +2,16 @@ import React, { useState, useEffect } from "react";
 import { HeroGif } from "../../assets/public-assets";
 import ReactPlayer from "react-player";
 import { HeroLoopGif } from "../../assets/public-assets";
-import { useVideoListContext } from "../../context/VideoListContext";
-import { getCategoriesService } from "../../services/Categories";
+//import { useVideoListContext } from "../../context/VideoListContext";
+import { getCategoriesService } from "../../services/CategoriesServices";
 import CategoryCard from "./CategoryCard";
 
 const Home = () => {
-  const { state } = useVideoListContext();
-  const { videoList } = state;
   const [categories, setCategories] = useState([]);
-
   const getCategoriesHandler = async () => {
     try {
       const response = await getCategoriesService();
-      console.log(response.data.categories);
+
       setCategories(response.data.categories);
     } catch (error) {
       console.log(error);

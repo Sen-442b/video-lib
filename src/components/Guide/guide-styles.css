@@ -1,0 +1,28 @@
+.guide {
+  position: fixed;
+  background-color: rgb(33, 32, 32, 0.5);
+  backdrop-filter: blur(10px);
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18rem;
+  padding: 1rem;
+  z-index: 999999;
+}
+
+.guide-select-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1.5rem;
+}
+
+.guide-select {
+  cursor: pointer;
+}
+.guide-select:hover {
+  color: var(--light-text-color);
+}

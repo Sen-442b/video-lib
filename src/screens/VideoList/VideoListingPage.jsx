@@ -1,20 +1,36 @@
 import React, { useEffect } from "react";
-import { useVideoListContext } from "../../context/VideoListContext";
+//import { useVideoListContext } from "../../context/VideoListContext";
 import VideoCard from "./VideoCard";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filterSelectedCategoryAction,
+  getVideoListAction,
+} from "../../redux/features/videoListSlice";
 
 const VideoListingPage = () => {
-  const { state, dispatch } = useVideoListContext();
-  const { videoList, filter } = state;
-  useEffect(() => {
-    return () => dispatch({ type: "FILTER_SELECTED_CATEGORY", payload: "" });
-  }, []);
+  //const { state, dispatch } = useVideoListContext();
+  const dispatch = useDispatch();
 
-  const getFilteredCategory = (videoList) => {
+  const videoListState = useSelector((storeState) => storeState.videoList);
+  const { videoList, filter } = videoListState;
+  console.log(videoList);
+  useEffect(() => {
+    return () => dispatch(filterSelectedCategoryAction(""));
+  }, []);
+  useEffect(() => dispatch(getVideoListAction()), []);
+
+  const getFilteredCategory = (videoList, filter) => {
     const filteredVideoList = videoList.filter(
       (video) => video.category === filter
     );
     return filteredVideoList.length !== 0 ? filteredVideoList : videoList;
   };
+
+  //Finish after authentication
+  const postToPlaylistService = async () => {
+    const response = axios.post("/api/user/playlists");
+  };
+
   return (
     <div>
       <div className="chips-wrapper">
@@ -33,12 +49,7 @@ const VideoListingPage = () => {
                     ? "chip fs-sml chip-active "
                     : "chip fs-sml"
                 }
-                onClick={() =>
-                  dispatch({
-                    type: "FILTER_SELECTED_CATEGORY",
-                    payload: category,
-                  })
-                }
+                onClick={() => dispatch(filterSelectedCategoryAction(category))}
               >
                 {category}
               </div>
@@ -46,7 +57,7 @@ const VideoListingPage = () => {
       </div>
       <div className="video-card-wrapper">
         {videoList.length !== 0 &&
-          getFilteredCategory(videoList).map((videoObj) => (
+          getFilteredCategory(videoList, filter).map((videoObj) => (
             <VideoCard key={videoObj._id} videoObj={videoObj} />
           ))}
       </div>

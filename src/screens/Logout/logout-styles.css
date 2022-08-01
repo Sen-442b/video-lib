@@ -1,0 +1,26 @@
+.primary-background {
+  background-color: var(--primary-background-color);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.logout {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  width: 20rem;
+  min-height: 20rem;
+  align-items: center;
+
+  padding: 1rem;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: inherit;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 2px;
+}

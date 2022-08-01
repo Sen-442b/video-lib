@@ -1,0 +1,52 @@
+.signup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 30%; /* position the left edge of the element at the middle of the parent */
+  width: 20rem;
+  height: min-content;
+  align-items: center;
+  padding: 1rem;
+
+  transform: translate(-50%, -50%);
+
+  backdrop-filter: blur(5px);
+  background-color: rgb(49 37 44 / 40%);
+  color: white;
+  border-radius: 4px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  color: initial;
+}
+.disabled:hover:after {
+  width: 0;
+}
+
+.mdm-blur {
+  filter: blur(8px);
+}
+
+.mdm-transition-all {
+  transition: all 0.5s;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 900px) {
+  .signup {
+    left: 50%;
+  }
+}
