@@ -19,6 +19,7 @@
   --alert-immediate-action-txt-color: rgb(156, 156, 25);
   --alert-success-bg-color: #86efac;
   --alert-success-txt-color: #1c8d46;
+  --bg-overlay: rgba(0, 0, 0, 0.566);
 }
 
 body {
@@ -35,4 +36,48 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.typography-heading-3 {
+  font-weight: 400;
+}
+.typography-para {
+  margin: 0;
+}
+
+.typography-para-light {
+  font-weight: 300;
+  font-size: small;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.vis-visible {
+  visibility: visible;
+}
+
+.vis-hidden {
+  visibility: hidden;
 }

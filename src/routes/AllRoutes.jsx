@@ -7,6 +7,7 @@ import Login from "../screens/Login/Login";
 import Logout from "../screens/Logout/Logout";
 import Signup from "../screens/Signup/Signup";
 import VideoListingPage from "../screens/VideoList/VideoListingPage";
+import WatchLater from "../screens/WatchLater/WatchLater";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 //import { ToastContainer } from "react-toastify";
@@ -44,8 +45,17 @@ const AllRoutes = () => {
             </PrivateRoutes>
           }
         />
+        <Route
+          path="/watchLater"
+          element={
+            <PrivateRoutes>
+              <WatchLater />
+            </PrivateRoutes>
+          }
+        />
+
+        {/* <ToastContainer />*/}
       </Routes>
-      {/* <ToastContainer />*/}
     </>
   );
 };
