@@ -7,7 +7,11 @@ const Guide = ({ setGuideIsActive }) => {
     <>
       <aside className="guide">
         <div className="guide-select-wrapper">
-          <div role="button" className="guide-select">
+          <div
+            role="button"
+            className="guide-select"
+            onClick={() => navigate("/videoListing")}
+          >
             Explore
           </div>
           <div role="button" className="guide-select">
