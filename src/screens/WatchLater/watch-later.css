@@ -55,6 +55,7 @@
   align-items: center;
   gap: 4px;
   padding-left: 1rem;
+  position: relative;
 }
 
 .fw-heavy {
@@ -97,4 +98,16 @@
   justify-content: space-between;
   width: 80%;
   align-items: center;
+}
+
+.menu-wrapper-sort {
+  width: 15rem;
+  height: 10rem;
+  left: 1rem;
+  top: 1.4rem;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 999;
+  background-color: #212121;
+  padding: 0.5rem;
 }
