@@ -37,6 +37,7 @@ import {
   addItemToWatchLaterVideos,
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
+  replaceWatchLaterVideos,
 } from "./backend/controllers/WatchLaterController";
 import {
   getAllUsersHandler,
@@ -106,6 +107,7 @@ export function makeServer({ environment = "development" } = {}) {
       // watch later routes (private)
       this.get("/user/watchlater", getWatchLaterVideosHandler.bind(this));
       this.post("/user/watchlater", addItemToWatchLaterVideos.bind(this));
+      this.post("/user/replaceWatchLater", replaceWatchLaterVideos.bind(this));
       this.delete(
         "/user/watchlater/:videoId",
         removeItemFromWatchLaterVideos.bind(this)

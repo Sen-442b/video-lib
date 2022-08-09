@@ -14,6 +14,7 @@ export const videos = [
     uploadDate: "Oct 7, 2020",
     views: 16_447_229,
     category: "Sci-Fi",
+    srNum: 0,
   },
   {
     _id: "uQI3nNKMfMc",
@@ -24,6 +25,7 @@ export const videos = [
     uploadDate: "Dec 8, 2021",
     views: 467_595,
     category: "Sci-Fi",
+    srNum: 1,
   },
   {
     _id: "saWNMPL5ygk",
@@ -35,6 +37,7 @@ export const videos = [
     uploadDate: "Dec 7, 2021",
     views: 5_250_552,
     category: "Sci-Fi",
+    srNum: 2,
   },
   {
     _id: "EJxwWpaGoJs",
@@ -46,6 +49,7 @@ export const videos = [
     views: 20_137_369,
     uploadDate: "Jun 12, 2015",
     category: "Documentary",
+    srNum: 3,
   },
   {
     _id: "a_T4QayqtI4",
@@ -56,6 +60,7 @@ export const videos = [
     views: 5_565_032,
     uploadDate: " Oct 28, 2020",
     category: "Documentary",
+    srNum: 4,
   },
   {
     _id: "udFxKZRyQt4",
@@ -66,6 +71,7 @@ export const videos = [
     views: 15_655_723,
     uploadDate: "Nov 10, 2019",
     category: "Educational",
+    srNum: 5,
   },
   {
     _id: "r5Pcqkhmp_0",
@@ -76,6 +82,7 @@ export const videos = [
     views: 3_192_107,
     uploadDate: "Oct 22, 2019",
     category: "Educational",
+    srNum: 6,
   },
   {
     _id: "aKwJayXTZUs",
@@ -86,6 +93,7 @@ export const videos = [
     views: 1_746_697,
     uploadDate: "Dec 23, 2018",
     category: "Educational",
+    srNum: 7,
   },
   {
     _id: "lw3KEg6b6bE",
@@ -96,6 +104,7 @@ export const videos = [
     views: 161_899,
     uploadDate: "Feb 10, 2018",
     category: "Events",
+    srNum: 8,
   },
   {
     _id: "7nT7JGZMbtM",
@@ -106,5 +115,6 @@ export const videos = [
     views: 10_444_036,
     uploadDate: "Dec 25, 2021",
     category: "Events",
+    srNum: 9,
   },
 ];

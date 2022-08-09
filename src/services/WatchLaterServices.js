@@ -11,7 +11,6 @@ export const getWatchLaterVideosService = async (encodedToken) => {
 };
 
 export const postWatchLaterVideoService = async (encodedToken, video) => {
-  console.log(video);
   const response = await axios.post(
     "/api/user/watchlater",
     { video },
@@ -25,8 +24,22 @@ export const postWatchLaterVideoService = async (encodedToken, video) => {
   return response;
 };
 
+export const replaceWatchLaterVideosService = async (
+  encodedToken,
+  updatedWatchLater
+) => {
+  const response = await axios.post(
+    "/api/user/replaceWatchLater",
+    { updatedWatchLater },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+  return response;
+};
 export const deleteWatchLaterVideoService = async (encodedToken, videoId) => {
-  console.log(encodedToken, "encodedToken");
   const response = await axios.delete(`/api/user/watchlater/${videoId}`, {
     headers: {
       authorization: encodedToken,

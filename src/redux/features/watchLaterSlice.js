@@ -4,6 +4,7 @@ import {
   deleteWatchLaterVideoService,
   getWatchLaterVideosService,
   postWatchLaterVideoService,
+  replaceWatchLaterVideosService,
 } from "../../services/WatchLaterServices";
 
 const initialState = {
@@ -18,7 +19,6 @@ const getWatchLaterVideosAction = createAsyncThunk(
   async (encodedToken, thunkAPI) => {
     try {
       const response = await getWatchLaterVideosService(encodedToken);
-      console.log(response);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -34,10 +34,24 @@ const postWatchLaterVideoAction = createAsyncThunk(
       const { encodedToken, video } = data;
 
       const response = await postWatchLaterVideoService(encodedToken, video);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+const replaceWatchLaterVideosAction = createAsyncThunk(
+  "watchLater/replaceWatchLater",
+  async (data, thunkAPI) => {
+    try {
+      const { encodedToken, updatedWatchLater } = data;
+      const response = await replaceWatchLaterVideosService(
+        encodedToken,
+        updatedWatchLater
+      );
+      return response.data;
+    } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
   }
@@ -52,7 +66,6 @@ const deleteWatchLaterVideoAction = createAsyncThunk(
         encodedToken,
         videoId
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -65,7 +78,7 @@ const pendingStateCallBack = (state) => {
   state.isLoading = true;
 };
 
-const fulfilledStateCallback = (state, action) => {
+const fulfilledStateCallBack = (state, action) => {
   state.isLoading = false;
   state.hasError = false;
   state.message = "";
@@ -80,26 +93,40 @@ const rejectedStateCallBack = (state, action) => {
 const watchLaterSlice = createSlice({
   name: "watchLater",
   initialState,
-  reducers: {},
+  reducers: {
+    updateLocalWatchLaterAction: (state, action) => {
+      state.watchLater = action.payload;
+    },
+  },
   extraReducers: {
     [getWatchLaterVideosAction.loading]: pendingStateCallBack,
-    [getWatchLaterVideosAction.fulfilled]: fulfilledStateCallback,
+    [getWatchLaterVideosAction.fulfilled]: fulfilledStateCallBack,
     [getWatchLaterVideosAction.rejected]: rejectedStateCallBack,
     [postWatchLaterVideoAction.loading]: pendingStateCallBack,
 
-    [postWatchLaterVideoAction.fulfilled]: fulfilledStateCallback,
+    [postWatchLaterVideoAction.fulfilled]: fulfilledStateCallBack,
     [postWatchLaterVideoAction.rejected]: rejectedStateCallBack,
+
+    [replaceWatchLaterVideosAction.loading]: pendingStateCallBack,
+    [replaceWatchLaterVideosAction.fulfilled]: fulfilledStateCallBack,
+    [replaceWatchLaterVideosAction.rejected]: rejectedStateCallBack,
+
     [deleteWatchLaterVideoAction.pending]: pendingStateCallBack,
-    [deleteWatchLaterVideoAction.fulfilled]: fulfilledStateCallback,
+    [deleteWatchLaterVideoAction.fulfilled]: fulfilledStateCallBack,
     [deleteWatchLaterVideoAction.rejected]: pendingStateCallBack,
   },
 });
 
 const watchLaterSliceReducer = watchLaterSlice.reducer;
-
+const { updateLocalWatchLaterAction } = watchLaterSlice.actions;
 export {
   watchLaterSliceReducer,
   getWatchLaterVideosAction,
   postWatchLaterVideoAction,
+  replaceWatchLaterVideosAction,
   deleteWatchLaterVideoAction,
+  updateLocalWatchLaterAction,
 };
+
+//TODO
+//UPDATE THE WATCH LATER STATE IN API AS WELL

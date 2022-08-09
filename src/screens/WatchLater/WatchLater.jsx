@@ -3,16 +3,24 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getWatchLaterVideosAction,
   postWatchLaterVideoAction,
+  replaceWatchLaterVideosAction,
+  updateLocalWatchLaterAction,
 } from "../../redux/features/watchLaterSlice";
+import { replaceWatchLaterVideosService } from "../../services/WatchLaterServices";
 import WatchLaterCard from "./WatchLaterCard";
 
 const WatchLater = () => {
   const dispatch = useDispatch();
   const watchLaterState = useSelector((storeState) => storeState.watchLater);
+  const authState = useSelector((storeState) => storeState.auth);
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
   const [dateSortType, setDateSortType] = useState("");
   const { watchLater } = watchLaterState;
-  ["2", "3"];
+
+  useEffect(() => {
+    return () =>
+      replaceWatchLaterVideosService(authState.authToken, watchLater);
+  }, []);
   const sortByDate = (dataArr, type) => {
     if (type === "newToOld") {
       return [...dataArr].sort((videoCardOne, videoCardTwo) => {
@@ -28,6 +36,46 @@ const WatchLater = () => {
       });
     }
     return dataArr;
+  };
+
+  /*TO BE USED FOR BUILDING ADVANCE FEATURES
+  const sortBySerialNumber = (dataArr) => {
+    return [...dataArr].sort(
+      (itemOne, itemTwo) => itemOne.srNum - itemTwo.srNum
+    );
+  };
+  */
+
+  /* TO BE USED WITH ADVANCE FEATURES
+  const swapSerialNumbers = (watchLater, srNumOne, srNumTwo) => {
+    if ((srNumOne || srNumOne === 0) && (srNumTwo || srNumTwo === 0)) {
+      const updatedWatchLaterArr = watchLater.map((watchLaterObj) => {
+        if (watchLaterObj.srNum === srNumOne) {
+          return { ...watchLaterObj, srNum: srNumTwo };
+        } else if (watchLaterObj.srNum === srNumTwo) {
+          return { ...watchLaterObj, srNum: srNumOne };
+        } else {
+          return watchLaterObj;
+        }
+      });
+      dispatch(updateLocalWatchLaterAction(updatedWatchLaterArr));
+    }
+  };
+*/
+  const swapArrIndex = (arr, dragData = "", dropData = "") => {
+    setDateSortType("");
+    if (dragData && dropData) {
+      console.log(dragData);
+      console.log(dropData);
+      let updatedArr = [...arr];
+      const { dragIndex, dragObj } = dragData;
+      const { dropIndex, dropObj } = dropData;
+      console.log(dropObj);
+      updatedArr[dragIndex] = dropObj;
+      updatedArr[dropIndex] = dragObj;
+
+      dispatch(updateLocalWatchLaterAction(updatedArr));
+    }
   };
 
   return (
@@ -54,7 +102,6 @@ const WatchLater = () => {
       <div className="watch-later-content">
         <div className="content-sort">
           <span
-            style={{ backgroundColor: "red" }}
             role="button"
             onClick={() => setIsSortMenuOpen((prevBool) => !prevBool)}
             onBlur={() => {
@@ -88,14 +135,19 @@ const WatchLater = () => {
           </span>
         </div>
         {watchLater.length !== 0 &&
-          sortByDate(watchLater, dateSortType).map((watchLaterObj) => {
-            return (
-              <WatchLaterCard
-                key={watchLaterObj._id}
-                watchLaterObj={watchLaterObj}
-              />
-            );
-          })}
+          sortByDate(watchLater, dateSortType).map(
+            (watchLaterObj, index, array) => {
+              return (
+                <WatchLaterCard
+                  key={watchLaterObj._id}
+                  watchLaterObj={watchLaterObj}
+                  watchLaterArr={array}
+                  swapArrIndex={swapArrIndex}
+                  index={index}
+                />
+              );
+            }
+          )}
       </div>
     </div>
   );

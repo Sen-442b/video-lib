@@ -3,18 +3,44 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteWatchLaterVideoAction } from "../../redux/features/watchLaterSlice";
 import { getVideoThumbnail } from "../../utils/getVideoThumbnail";
 
-const WatchLaterCard = ({ watchLaterObj }) => {
+const WatchLaterCard = ({
+  watchLaterObj,
+  watchLaterArr,
+  swapArrIndex,
+  index,
+}) => {
   const [displayEllipsis, setDisplayEllipsis] = useState(false);
   const [displayMenuItems, setDisplayMenuItems] = useState(false);
   const dispatch = useDispatch();
   const authState = useSelector((storeState) => storeState.auth);
-  const { _id, title, creator } = watchLaterObj;
+  const { _id, title, creator, srNum } = watchLaterObj;
 
   return (
     <div
       className="content-main"
       onMouseOver={() => setDisplayEllipsis(true)}
       onMouseLeave={() => !displayMenuItems && setDisplayEllipsis(false)}
+      draggable="true"
+      onDragStart={(e) => {
+        e.dataTransfer.setData(
+          "text/plain",
+          JSON.stringify({ dragIndex: index, dragObj: watchLaterObj })
+        );
+      }}
+      onDragOver={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        console.log("dragging");
+      }}
+      onDrop={(e) => {
+        e.preventDefault();
+        const dragData = JSON.parse(e.dataTransfer.getData("text/plain"));
+        const dropData = { dropIndex: index, dropObj: watchLaterObj };
+
+        if (dragData.dragIndex !== dropData.dropIndex) {
+          swapArrIndex(watchLaterArr, dragData, dropData);
+        }
+      }}
     >
       <i className="fas fa-grip-lines cursor-grab"></i>
       <div className="content-thumbnail-wrapper">
@@ -85,3 +111,4 @@ export default WatchLaterCard;
 //Remove From Playlist
 //Sort Functionality
 //Draggable Video Cards
+//SWAP ACTION IS NOT WORKING 08/08/12
