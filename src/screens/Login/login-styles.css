@@ -7,6 +7,7 @@
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+  z-index: 99999999;
 }
 
 .background-gif {
@@ -32,6 +33,7 @@
   background-color: rgb(49 37 44 / 40%);
   color: white;
   border-radius: 4px;
+  z-index: 999999999999;
 }
 
 /* .login-heading{

@@ -44,6 +44,7 @@ export const getWatchLaterVideosHandler = function (schema, request) {
 
 export const addItemToWatchLaterVideos = function (schema, request) {
   const user = requiresAuth.call(this, request);
+
   if (user) {
     const { video } = JSON.parse(request.requestBody);
     if (user.watchlater.some((item) => item.id === video.id)) {
@@ -64,6 +65,20 @@ export const addItemToWatchLaterVideos = function (schema, request) {
     {
       errors: ["The email you entered is not Registered. Not Found error"],
     }
+  );
+};
+export const replaceWatchLaterVideos = function (schema, request) {
+  const user = requiresAuth.call(this, request);
+  if (user) {
+    const { updatedWatchLater } = JSON.parse(request.requestBody);
+    user.watchlater = updatedWatchLater;
+    return new Response(201, {}, { watchlater: user.watchlater });
+  }
+
+  return new Response(
+    404,
+    {},
+    { errors: ["The email you entered is not Registered. Not Found error"] }
   );
 };
 
