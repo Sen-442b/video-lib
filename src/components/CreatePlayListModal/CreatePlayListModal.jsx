@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const CreatePlayListModal = ({ setIsCreatePlayListModalOpen }) => {
+  const [isAddNewPlayListOpen, setIsAddNewPlayListOpen] = useState(false);
   return (
     <div
       className="modal-wrapper"
@@ -15,7 +16,7 @@ const CreatePlayListModal = ({ setIsCreatePlayListModalOpen }) => {
             role="button"
             onClick={() => setIsCreatePlayListModalOpen(false)}
           >
-            <i class="fas fa-times cursor-pointer"></i>
+            <i className="fas fa-times cursor-pointer"></i>
           </span>
         </div>
         <div className="flex-gap-sml flex-column">
@@ -47,15 +48,32 @@ const CreatePlayListModal = ({ setIsCreatePlayListModalOpen }) => {
             <label htmlFor="spider">Spider</label>
           </div>
         </div>
-        <div
-          className="flex-gap-sml flex-center cursor-pointer modal-footer"
-          role="button"
-        >
-          <span className="fs-lrg">
-            <i className="far fa-plus"></i>
-          </span>
-          <p className="margin-0"> Create New Playlist</p>
-        </div>
+        {isAddNewPlayListOpen ? (
+          <>
+            <div className="app-input-wrapper">
+              <input
+                type="text"
+                id="add-playlist"
+                placeholder="Enter Playlist Name"
+                className="app-input"
+              />
+              <label htmlFor="add-playlist" className="app-input-label">
+                Enter Playlist Name...
+              </label>
+            </div>
+          </>
+        ) : (
+          <div
+            className="flex-gap-sml flex-center cursor-pointer modal-footer"
+            role="button"
+            onClick={() => setIsAddNewPlayListOpen(true)}
+          >
+            <span className="fs-lrg">
+              <i className="far fa-plus"></i>
+            </span>
+            <p className="margin-0"> Create New Playlist</p>
+          </div>
+        )}
       </div>
     </div>
   );
