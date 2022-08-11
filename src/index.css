@@ -20,6 +20,7 @@
   --alert-success-bg-color: #86efac;
   --alert-success-txt-color: #1c8d46;
   --bg-overlay: rgba(0, 0, 0, 0.566);
+  --light-grey: rgba(255, 255, 255, 0.1);
 }
 
 body {
@@ -36,6 +37,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.app-checkbox {
+  accent-color: rgb(78, 120, 78);
 }
 
 .text-align-center {
@@ -80,4 +85,40 @@ code {
 
 .vis-hidden {
   visibility: hidden;
+}
+
+.flex-gap-sml {
+  display: flex;
+  gap: 0.5rem;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-items-center {
+  display: flex;
+  align-items: center;
+}
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.fs-lrg {
+  font-size: x-large;
+}
+
+.light-grey-txt-color {
+  color: var(--light-grey);
 }

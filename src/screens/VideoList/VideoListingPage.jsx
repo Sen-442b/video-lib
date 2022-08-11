@@ -9,8 +9,8 @@ import {
 
 const VideoListingPage = () => {
   //const { state, dispatch } = useVideoListContext();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const videoListState = useSelector((storeState) => storeState.videoList);
   const { videoList, filter } = videoListState;
 
@@ -24,11 +24,6 @@ const VideoListingPage = () => {
       (video) => video.category === filter
     );
     return filteredVideoList.length !== 0 ? filteredVideoList : videoList;
-  };
-
-  //Finish after authentication
-  const postToPlaylistService = async () => {
-    const response = axios.post("/api/user/playlists");
   };
 
   return (
