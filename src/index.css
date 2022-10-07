@@ -11,6 +11,7 @@
   --dim-text-color: rgba(235, 235, 235, 0.03);
   --primary-alert-background-color: #93c5fd;
   --primary-alert-text-color: #147af0;
+  --primary-action: rgb(78, 120, 78);
   --secondary-alert-background-color: #d8b4fe;
   --secondary-alert-text-color: #953ff0;
   --danger-background-color: #fca5a5;
@@ -21,6 +22,8 @@
   --alert-success-txt-color: #1c8d46;
   --bg-overlay: rgba(0, 0, 0, 0.566);
   --light-grey: rgba(255, 255, 255, 0.1);
+  --invalid-color: #ff4e45;
+  --success-color: #2ba640;
 }
 
 body {

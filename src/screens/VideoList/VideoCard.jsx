@@ -43,6 +43,7 @@ const VideoCard = ({ videoObj }) => {
       {isCreatePlayListModalOpen && (
         <CreatePlayListModal
           setIsCreatePlayListModalOpen={setIsCreatePlayListModalOpen}
+          video={videoObj}
         />
       )}
       <div

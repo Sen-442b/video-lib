@@ -1,0 +1,10 @@
+.message-text-sml {
+  font-size: 0.78rem;
+}
+
+.success-txt {
+  color: var(--success-color);
+}
+.error-txt {
+  color: var(--invalid-color);
+}
