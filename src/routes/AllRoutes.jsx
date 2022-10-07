@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../screens/Home/Home";
 import Login from "../screens/Login/Login";
 import Logout from "../screens/Logout/Logout";
+import Playlists from "../screens/Playlists/Playlists";
 import Signup from "../screens/Signup/Signup";
 import VideoListingPage from "../screens/VideoList/VideoListingPage";
 import WatchLater from "../screens/WatchLater/WatchLater";
@@ -50,6 +51,14 @@ const AllRoutes = () => {
           element={
             <PrivateRoutes>
               <WatchLater />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/playlists"
+          element={
+            <PrivateRoutes>
+              <Playlists />
             </PrivateRoutes>
           }
         />

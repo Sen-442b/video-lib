@@ -14,7 +14,11 @@ const Guide = ({ setGuideIsActive }) => {
           >
             Explore
           </div>
-          <div role="button" className="guide-select">
+          <div
+            role="button"
+            className="guide-select"
+            onClick={() => navigate("/playlists")}
+          >
             Playlists
           </div>
           <div

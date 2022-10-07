@@ -18,10 +18,11 @@ const PlayListCheckboxes = ({ title, videos, video, videoId, playlistId }) => {
   const toggleVideoInPlayList = (e) => {
     if (e.target.checked) {
       console.log("add to playList");
-      if (!playListContainsVideo)
+      if (!playListContainsVideo) {
         dispatch(
           postVideoToPlayListAction({ encodedToken, playlistId, video })
         );
+      }
     } else {
       console.log("delete the video from playlist");
       //encodedToken playlistId videoId
